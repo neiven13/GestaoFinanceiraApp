@@ -1,0 +1,1 @@
+# Instruções para uso de git para contribuir no projeto
