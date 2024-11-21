@@ -1,1 +1,1 @@
-# Instruções para uso de git para contribuir no projeto
+# Instruções de como contribuir com o projeto
