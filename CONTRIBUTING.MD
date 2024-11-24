@@ -40,13 +40,13 @@ Para escrever a mensagem do commit pense assim: "Se eu aplicar esse commit, ele 
 Verifique a **[Convenção de Commits](#convenção-de-commits)** para escrever a mensagem do seu commit de forma padronizada e simples
 
 6. **Enviar sua branch para o repositório remoto**:
-Compartilhe as alterações usando o comando `git push origin <nome da branch>`
+Compartilhe as alterações usando o comando `git push origin <nome da branch>`.
 
 7. **Abrir um Pull Request**:
-Com o repositório aberto no GitHub,
+Com o repositório aberto no GitHub, na página inicial ou na página da branch que você enviou, irá aparecer a opção "Compare & pull request", clique nessa opção e preencha os detalhes do pull request, depois clique em "Create Pull Request".
 
 8. **Aguardar revisão**:
-Dois contribuidores irão revisar o seu código. Os comentários da revisão aparecerão no Pull Request 
+Dois contribuidores irão revisar o seu código. Os comentários da revisão aparecerão no Pull Request.
 
 9. **Aprovação e Merge das branches**:
 Fim! 🎉Seu pull request foi aprovado e será mesclado na branch principal!
