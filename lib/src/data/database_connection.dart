@@ -1,3 +1,4 @@
+import 'package:granago_app/src/data/scripts.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -11,9 +12,9 @@ class DatabaseConnection {
         databasePath,
         version: 1,
         onCreate: (db, version) => {
-          db.execute('') //script sql aqui
+          db.execute(createTable) 
         },
-        );
+      );
     }
     return _database!;
   }

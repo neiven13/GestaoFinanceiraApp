@@ -7,4 +7,3 @@ class GastoModel {
   GastoModel(this.id, this.descricao, this.dataGasto, this.valorGasto);
 }
 
-
