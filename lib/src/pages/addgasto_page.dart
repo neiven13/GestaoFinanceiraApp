@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:granago_app/src/controllers/gasto_controller.dart';
+import 'package:granago_app/src/data/services/gasto_repository.dart';
 import 'package:granago_app/src/models/valor_gasto_formatter.dart';
 import 'package:granago_app/src/pages/home_page.dart';
 
@@ -11,8 +13,10 @@ class AddGastoPage extends StatefulWidget {
 }
 
 class _AddGastoPageState extends State<AddGastoPage> {
-  final TextEditingController _valorInicialController =
+  final TextEditingController _valorController =
       TextEditingController(text: '0,00');
+  final TextEditingController _descricaoController = TextEditingController();
+  final GastoController _gastoController = GastoController(GastoRepository());
   int selectedIndex = 0;
   DateTime gastoDate = DateTime.now();
   final Color corPrincipal = const Color.fromRGBO(79, 125, 106, 1);
@@ -46,7 +50,7 @@ class _AddGastoPageState extends State<AddGastoPage> {
                 const SizedBox(width: 5),
                 Expanded(
                   child: TextField(
-                    controller: _valorInicialController,
+                    controller: _valorController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
@@ -69,6 +73,7 @@ class _AddGastoPageState extends State<AddGastoPage> {
             ),
             const SizedBox(height: 20),
             TextField(
+              controller: _descricaoController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -111,6 +116,7 @@ class _AddGastoPageState extends State<AddGastoPage> {
                   onPressed: () {
                     setState(() {
                       selectedIndex = 1;
+                      gastoDate = gastoDate.subtract(const Duration(days: 1));
                     });
                   },
                   child: const Text("Ontem"),
@@ -168,7 +174,13 @@ class _AddGastoPageState extends State<AddGastoPage> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                await _gastoController.addGasto(
+                    descricao: _descricaoController.text,
+                    valor: _valorController.text,
+                    data: gastoDate);
+                Navigator.pop(context);
+              },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(200, 40),
                 foregroundColor: Colors.white,
