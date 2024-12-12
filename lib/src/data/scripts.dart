@@ -6,3 +6,7 @@ CREATE TABLE gastos (
   dataGasto TEXT NOT NULL
 );
 ''';
+
+const addGasto = '''
+INSERT INTO gastos (descricao,valorGasto,dataGasto) VALUES(?,?,?)
+''';
