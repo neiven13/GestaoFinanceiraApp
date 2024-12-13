@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:granago_app/src/models/gasto_model.dart';
 import 'package:granago_app/src/models/valor_gasto_formatter.dart';
-import 'package:granago_app/src/pages/home_page.dart';
 
 class EditGastoPage extends StatefulWidget {
   final GastoModel gasto; // Gasto que será editado
