@@ -1,13 +1,13 @@
-class Gasto {
-  final int id;
-  final double valor;
+class GastoModel {
+  final int? id;
   final String descricao;
+  final double valor;
   final DateTime data;
 
-  Gasto({
-    required this.id,
-    required this.valor,
+  const GastoModel({
+    this.id,
     required this.descricao,
-    required this.data,
+    required this.valor,
+    required this.data
   });
 }

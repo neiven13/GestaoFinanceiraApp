@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:granago_app/src/pages/teste_home.dart';
+import 'package:granago_app/src/pages/lista.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -7,12 +7,13 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'GranaGo',
       theme: ThemeData(
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const TesteHome(),
+      home: const Lista(),
     );
   }
 }
