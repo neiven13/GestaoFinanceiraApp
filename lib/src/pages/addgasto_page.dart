@@ -16,7 +16,7 @@ class _AddGastoPageState extends State<AddGastoPage> {
   final TextEditingController _valorController =
       TextEditingController(text: '0,00');
   final TextEditingController _descricaoController = TextEditingController();
-  final GastoController _gastoController = GastoController(GastoRepositorio());
+  final GastoController _gastoController = GastoController();
   int selectedIndex = 0;
   DateTime gastoDate = DateTime.now();
   final Color corPrincipal = const Color.fromRGBO(79, 125, 106, 1);

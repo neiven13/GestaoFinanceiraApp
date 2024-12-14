@@ -42,4 +42,15 @@ class GastoRepositorio {
     await _banco?.rawInsert(sql,
         [gasto.descricao, gasto.valor, gasto.data.toIso8601String()]);
   }
+
+  void deletar(int id) async {
+    const String nomeTabela = 'gastos';
+    const String queryWhere = 'id = ?';
+
+    await _banco?.delete(
+      nomeTabela,
+      where: queryWhere,
+      whereArgs: [id],
+    );
+  }
 }

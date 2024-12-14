@@ -4,6 +4,10 @@ import 'package:granago_app/src/models/gasto_model.dart';
 class GastoController {
   final GastoRepositorio _repositorio = GastoRepositorio();
 
+  void deletar(int id) async {
+    _repositorio.deletar(id);
+  }
+
   Future<void> adicionarGasto({
     required String descricao,
     required String valor,

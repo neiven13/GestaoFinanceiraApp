@@ -3,6 +3,7 @@ import 'package:granago_app/src/controllers/gasto_controller.dart';
 import 'package:granago_app/src/models/gasto_model.dart';
 import 'package:intl/intl.dart';
 import 'package:granago_app/src/pages/addgasto_page.dart';
+import 'package:granago_app/src/pages/deletar_gasto.dart';
 
 class Lista extends StatefulWidget {
   const Lista({super.key});
@@ -97,7 +98,9 @@ class _ListaState extends State<Lista> {
                         iconSize: 20,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          criarDialogoDeletar(gastos[index].id, gastos[index].descricao, gastos[index].valor);
+                        },
                         icon: const Icon(Icons.delete),
                         iconSize: 20,
                       ),
@@ -108,5 +111,17 @@ class _ListaState extends State<Lista> {
         );
      }
     );
+  }
+
+  void criarDialogoDeletar(int? id, String descricao, double valor) {
+    if(id != null) {
+      showDialog(
+        context: context,
+        builder: (context) => DeletarGasto(
+              descricao: descricao,
+              id: id,
+              valor: valor,
+            ));
+    }
   }
 }
