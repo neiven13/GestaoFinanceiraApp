@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:granago_app/src/pages/home_page.dart';
+import 'package:granago_app/src/pages/lista.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -12,7 +12,7 @@ class AppWidget extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const HomePage(),
+      home: const Lista(),
     );
   }
 }
