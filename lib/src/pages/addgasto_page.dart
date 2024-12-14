@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:granago_app/src/controllers/gasto_controller.dart';
-import 'package:granago_app/src/data/services/gasto_repository.dart';
+import 'package:granago_app/src/data/services/gasto_repositorio.dart';
 import 'package:granago_app/src/models/valor_gasto_formatter.dart';
-import 'package:granago_app/src/pages/home_page.dart';
+import 'package:granago_app/src/pages/lista.dart';
 
 class AddGastoPage extends StatefulWidget {
   const AddGastoPage({super.key});
@@ -16,7 +16,7 @@ class _AddGastoPageState extends State<AddGastoPage> {
   final TextEditingController _valorController =
       TextEditingController(text: '0,00');
   final TextEditingController _descricaoController = TextEditingController();
-  final GastoController _gastoController = GastoController(GastoRepository());
+  final GastoController _gastoController = GastoController(GastoRepositorio());
   int selectedIndex = 0;
   DateTime gastoDate = DateTime.now();
   final Color corPrincipal = const Color.fromRGBO(79, 125, 106, 1);
@@ -159,7 +159,7 @@ class _AddGastoPageState extends State<AddGastoPage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop(
-                    MaterialPageRoute(builder: (context) => const HomePage()));
+                    MaterialPageRoute(builder: (context) => const Lista()));
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(100, 40),
@@ -175,7 +175,7 @@ class _AddGastoPageState extends State<AddGastoPage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                await _gastoController.addGasto(
+                await _gastoController.adicionarGasto(
                     descricao: _descricaoController.text,
                     valor: _valorController.text,
                     data: gastoDate);

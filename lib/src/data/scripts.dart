@@ -1,4 +1,4 @@
-const createTable = '''
+const criarTabelaGastos = '''
 CREATE TABLE gastos (
   id INTEGER PRIMARY KEY,
   descricao VARCHAR(80) NOT NULL,
@@ -7,6 +7,6 @@ CREATE TABLE gastos (
 );
 ''';
 
-const addGasto = '''
+const adicionarGasto = '''
 INSERT INTO gastos (descricao,valorGasto,dataGasto) VALUES(?,?,?)
 ''';

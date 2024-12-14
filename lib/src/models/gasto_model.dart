@@ -1,26 +1,13 @@
 class GastoModel {
-  int? id;
-  String descricao;
-  DateTime dataGasto;
-  double valorGasto;
+  final int? id;
+  final String descricao;
+  final double valor;
+  final DateTime data;
 
-  GastoModel({
+  const GastoModel({
     this.id,
     required this.descricao,
-    required this.dataGasto,
-    required this.valorGasto,
+    required this.valor,
+    required this.data
   });
-
-  Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{
-      'descricao': descricao,
-      'dataGasto': dataGasto.toIso8601String(),
-      'valorGasto': valorGasto,
-    };
-    if (id != null) {
-      map['id'] = id;
-    }
-
-    return map;
-  }
 }
