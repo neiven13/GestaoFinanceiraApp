@@ -1,2 +1,18 @@
 # GestaoFinanceiraApp
-Este repositório é destinado à colaboração em equipe para o desenvolvimento de um aplicativo acadêmico utilizando Flutter e SQLite.
+
+🚧EM DESENVOLVIMENTO🚧
+
+>[!IMPORTANT]
+>Consulte as instruções no arquivo [CONTRIBUTING.MD](CONTRIBUTING.MD) antes de enviar suas contribuições para o projeto
+
+## 📝Descrição
+
+### Funcionalidades a implementar 
+- [ ] Incluir registros de entrada e saída
+- [ ] Editar registros
+- [ ] Deletar registros
+- [ ] Listar todos os registros
+
+## 🤝Autores 
+
+## Como usar
