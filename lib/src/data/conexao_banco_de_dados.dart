@@ -1,23 +1,22 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:granago_app/src/data/scripts.dart';
 
-class DatabaseConnection {
+class ConexaoBancoDeDados {
   Database? bancoDeDados;
-  final String _nomeBancoDeDados = "GranaGo-App.db";
+  final String _nomeBancoDeDados = "GranaGo-App";
 
   // Instância única da classe (Singleton)
-  static final DatabaseConnection _instancia = DatabaseConnection._internal();
+  static final ConexaoBancoDeDados _instancia = ConexaoBancoDeDados._internal();
 
   // Construtor privado para evitar a criação de novas instâncias
-  DatabaseConnection._internal();
+  ConexaoBancoDeDados._internal();
 
   // Factory que retorna a instância única
-  factory DatabaseConnection() {
+  factory ConexaoBancoDeDados() {
     return _instancia;
   }
 
@@ -25,19 +24,15 @@ class DatabaseConnection {
     // Avoid errors caused by flutter upgrade.
     WidgetsFlutterBinding.ensureInitialized();
 
-    Directory diretorioDeDocumentos = await getApplicationDocumentsDirectory();
-    String caminhoBancoDeDados = join(diretorioDeDocumentos.path, _nomeBancoDeDados);
-    bancoDeDados = await openDatabase(
-      caminhoBancoDeDados,
-      // Set the version. This executes the onCreate function and provides a
-      // path to perform database upgrades and downgrades.
-      version: 2,
-      onCreate: (db, version) {
-        // Run the CREATE TABLE statement on the database.
-        return db.execute(
-          'CREATE TABLE gastos(id INTEGER PRIMARY KEY, descricao TEXT, valor REAL, data TEXT)',
-        );
-      }
-    );
+    if (bancoDeDados == null) {
+      String databasePath = join(await getDatabasesPath(), _nomeBancoDeDados);
+      bancoDeDados = await openDatabase(
+        databasePath,
+        version: 1,
+        onCreate: (db, version) => {
+          db.execute(criarTabelaGastos) 
+        },
+      );
+    }
   }
 }

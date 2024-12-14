@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:granago_app/src/controllers/gasto_controller.dart';
 import 'package:granago_app/src/models/gasto_model.dart';
 import 'package:intl/intl.dart';
+import 'package:granago_app/src/pages/addgasto_page.dart';
 
 class Lista extends StatefulWidget {
   const Lista({super.key});
@@ -42,7 +43,10 @@ class _ListaState extends State<Lista> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 97, 176, 143),
         shape: const CircleBorder(),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const AddGastoPage()));
+        },
         child: const Icon(
           Icons.add,
           color: Colors.white,
@@ -65,7 +69,6 @@ class _ListaState extends State<Lista> {
         return Card(
           elevation: 8.0,
           margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
-          shape: ,
           child: ListTile(
             contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
             title: Text(

@@ -1,14 +1,13 @@
 import 'package:granago_app/src/data/conexao_banco_de_dados.dart';
 import 'package:granago_app/src/models/gasto_model.dart';
-import 'package:granago_app/src/pages/lista.dart';
+import 'package:granago_app/src/data/scripts.dart';
 
 class GastoRepositorio {
-  Future<List<GastoModel>> gastos() async{
-    // Get a reference to the database.
-    final banco = DatabaseConnection().bancoDeDados;
+  final _banco = ConexaoBancoDeDados().bancoDeDados;
 
+  Future<List<GastoModel>> gastos() async{
     // Query the table for all the dogs.
-    List<Map<String,Object?>>? mapeamentoDeGastos = await banco?.query('gastos');
+    List<Map<String,Object?>>? mapeamentoDeGastos = await _banco?.query('gastos');
 
     final separadorData = '-';
     final indiceAno = 0;
@@ -36,5 +35,11 @@ class GastoRepositorio {
       ];
     }
     return List.empty();    
+  }
+
+  Future<void> inserirGasto(GastoModel gasto) async {
+    var sql = adicionarGasto;
+    await _banco?.rawInsert(sql,
+        [gasto.descricao, gasto.valor, gasto.data.toIso8601String()]);
   }
 }
