@@ -10,9 +10,10 @@ class GastoRepositorio {
     List<Map<String,Object?>>? mapeamentoDeGastos = await _banco?.query('gastos');
 
     final separadorData = '-';
-    final indiceAno = 0;
+    final separadorDataHora = ' ';
+    final indiceAnoEDIa = 0;
     final indiceMes = 1;
-    final indiceDia = 2;
+    final indiceDataHora = 2;
 
     if(mapeamentoDeGastos!.isNotEmpty) {
       return [
@@ -27,9 +28,9 @@ class GastoRepositorio {
           descricao: descricao,
           valor: valor,
           data: DateTime(
-            int.parse(data.split(separadorData)[indiceAno]), 
+            int.parse(data.split(separadorData)[indiceAnoEDIa]), 
             int.parse(data.split(separadorData)[indiceMes]), 
-            int.parse(data.split(separadorData)[indiceDia])
+            int.parse(data.split(separadorData)[indiceDataHora].split(separadorDataHora)[indiceAnoEDIa])
           )
         ),
       ];
@@ -40,7 +41,7 @@ class GastoRepositorio {
   Future<void> inserirGasto(GastoModel gasto) async {
     var sql = adicionarGasto;
     await _banco?.rawInsert(sql,
-        [gasto.descricao, gasto.valor, gasto.data.toIso8601String()]);
+        [gasto.descricao, gasto.valor, gasto.data.toString()]);
   }
 
   void deletar(int id) async {

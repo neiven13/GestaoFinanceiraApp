@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:granago_app/src/controllers/gasto_controller.dart';
-import 'package:granago_app/src/data/services/gasto_repositorio.dart';
 import 'package:granago_app/src/models/valor_gasto_formatter.dart';
 import 'package:granago_app/src/pages/lista.dart';
 
@@ -13,8 +12,7 @@ class AddGastoPage extends StatefulWidget {
 }
 
 class _AddGastoPageState extends State<AddGastoPage> {
-  final TextEditingController _valorController =
-      TextEditingController(text: '0,00');
+  final TextEditingController _valorController = TextEditingController(text: '0,00');
   final TextEditingController _descricaoController = TextEditingController();
   final GastoController _gastoController = GastoController();
   int selectedIndex = 0;
@@ -25,14 +23,15 @@ class _AddGastoPageState extends State<AddGastoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Despesa"),
+        title: const Text(
+          "Criar gasto",
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontFamily: 'shrikhand',
+            fontSize: 25
+          ),
+        ),
         backgroundColor: corPrincipal,
-        titleTextStyle: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-            fontStyle: FontStyle.italic,
-            letterSpacing: 1.5),
       ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -175,11 +174,12 @@ class _AddGastoPageState extends State<AddGastoPage> {
             ),
             ElevatedButton(
               onPressed: () async {
+                const indicadorObterGastos = "obterGastos";
                 await _gastoController.adicionarGasto(
                     descricao: _descricaoController.text,
                     valor: _valorController.text,
                     data: gastoDate);
-                Navigator.pop(context);
+                Navigator.pop(context, indicadorObterGastos);
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(200, 40),
