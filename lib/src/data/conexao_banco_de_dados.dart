@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -29,8 +28,8 @@ class ConexaoBancoDeDados {
       bancoDeDados = await openDatabase(
         databasePath,
         version: 1,
-        onCreate: (db, version) => {
-          db.execute(criarTabelaGastos) 
+        onCreate: (db, version) async {
+          await db.execute(criarTabelaGastos);
         },
       );
     }

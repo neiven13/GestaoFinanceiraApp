@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:granago_app/src/controllers/gasto_controller.dart';
+import 'package:granago_app/src/pages/lista.dart';
 
 class DeletarGasto extends StatelessWidget {
   final id;
@@ -43,8 +44,9 @@ class DeletarGasto extends StatelessWidget {
             // Botão Confirmar
             ElevatedButton(
               onPressed: () {
+                const indicadorObterGastos = "obterGastos";
                 GastoController().deletar(this.id);
-                Navigator.of(context).pop(); // Fecha o diálogo após a exclusão
+                Navigator.of(context).pop(indicadorObterGastos); // Fecha o diálogo após a exclusão
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Item excluído com sucesso!')),
                 );

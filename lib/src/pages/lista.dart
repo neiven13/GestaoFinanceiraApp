@@ -46,9 +46,13 @@ class _ListaState extends State<Lista> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 97, 176, 143),
         shape: const CircleBorder(),
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
+        onPressed: () async {
+          const indicadorObterGastos = "obterGastos";
+          final resultado = await Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => const AddGastoPage()));
+          if(resultado != null && resultado == indicadorObterGastos) {
+            obterGastos();
+          }
         },
         child: const Icon(
           Icons.add,
@@ -123,15 +127,19 @@ class _ListaState extends State<Lista> {
     );
   }
 
-  void criarDialogoDeletar(int? id, String descricao, double valor) {
+  void criarDialogoDeletar(int? id, String descricao, double valor) async {
     if(id != null) {
-      showDialog(
+      const String indicadorObterGastos = "obterGastos";
+      final resultado = await showDialog(
         context: context,
         builder: (context) => DeletarGasto(
               descricao: descricao,
               id: id,
               valor: valor,
             ));
+      if(resultado != null && resultado == indicadorObterGastos) {
+        obterGastos();
+      }
     }
   }
 }
