@@ -53,4 +53,17 @@ class GastoRepositorio {
       whereArgs: [id],
     );
   }
+
+  Future<void> atualizarGasto(int? id, double valor, String descricao, DateTime data) async {
+    await _banco?.update(
+      'gastos', // Nome da tabela
+      {
+        'valor': valor,        // Coluna 'valor'
+        'descricao': descricao, // Coluna 'descricao'
+        'data': data.toIso8601String(), // Coluna 'data'
+      }, // Dados a serem atualizados
+      where: 'id = ?', // Condição de atualização
+      whereArgs: [id], // Argumentos para a condição
+    );
+  }
 }

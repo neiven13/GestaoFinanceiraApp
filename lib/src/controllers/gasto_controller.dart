@@ -29,4 +29,8 @@ class GastoController {
     List<GastoModel> gastos = await GastoRepositorio().gastos();
     return gastos;
   }
+
+  Future<void> atualizarGasto(int? id, double valor, String descricao, DateTime data) async {
+    await _repositorio.atualizarGasto(id!, valor, descricao, data);
+  }
 }

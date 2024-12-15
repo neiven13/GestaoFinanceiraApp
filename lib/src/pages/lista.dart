@@ -5,6 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:granago_app/src/pages/addgasto_page.dart';
 import 'package:granago_app/src/pages/deletar_gasto.dart';
 
+import 'editar_gasto.dart';
+
 class Lista extends StatefulWidget {
   const Lista({super.key});
 
@@ -93,7 +95,23 @@ class _ListaState extends State<Lista> {
                       child: Container()
                     ),
                     IconButton(
-                        onPressed: () {}, 
+                      onPressed: () async {
+                        // Ao clicar no ícone, vai abrir a página de edição do gasto
+                        final updatedGasto = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditGastoPage(gasto: gastos[index]),
+                          ),
+                        );
+                        if (updatedGasto != null){
+                          setState(() {
+                            final index = gastos.indexWhere((gasto) => gasto.id == updatedGasto.id);
+                            if (index != -1){
+                              gastos[index] =updatedGasto;
+                            }
+                          });
+                        }
+                      },
                         icon: const Icon(Icons.edit),
                         iconSize: 20,
                       ),
