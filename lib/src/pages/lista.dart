@@ -96,20 +96,12 @@ class _ListaState extends State<Lista> {
                     ),
                     IconButton(
                       onPressed: () async {
-                        // Ao clicar no ícone, vai abrir a página de edição do gasto
-                        final updatedGasto = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => EditGastoPage(gasto: gastos[index]),
-                          ),
+                        final updatedGasto = await Navigator.of(
+                            context).push(MaterialPageRoute
+                          (builder: (context) => EditGastoPage(gasto: gastos[index]))
                         );
-                        if (updatedGasto != null){
-                          setState(() {
-                            final index = gastos.indexWhere((gasto) => gasto.id == updatedGasto.id);
-                            if (index != -1){
-                              gastos[index] =updatedGasto;
-                            }
-                          });
+                        if(updatedGasto != null) {
+                          setState(() {});
                         }
                       },
                         icon: const Icon(Icons.edit),

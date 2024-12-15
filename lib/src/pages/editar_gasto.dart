@@ -201,13 +201,13 @@ class _EditGastoPageState extends State<EditGastoPage> {
             ElevatedButton(
               onPressed: () async {
                 // Passando os dados diretamente sem usar o modelo
+                const indicadorObterGastos = "obterGastos";
                 await GastoController().atualizarGasto(
-                  widget.gasto.id,
-                  double.parse(_valorController.text.replaceAll(',', '.')),
-                  _descricaoController.text,
-                  gastoDate,
-                );
-                Navigator.of(context).pop(widget.gasto);
+                    widget.gasto.id,
+                    double.parse(_valorController.text.replaceAll(',', '.')),
+                    _descricaoController.text,
+                    gastoDate);
+                Navigator.pop(context, indicadorObterGastos);
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(200, 40),
