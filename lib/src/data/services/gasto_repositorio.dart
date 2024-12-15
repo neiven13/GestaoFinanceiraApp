@@ -61,7 +61,7 @@ class GastoRepositorio {
       {
         'valor': valor,        // Coluna 'valor'
         'descricao': descricao, // Coluna 'descricao'
-        'data': data.toIso8601String(), // Coluna 'data'
+        'data': data.toString(), // Coluna 'data'
       }, // Dados a serem atualizados
       where: 'id = ?', // Condição de atualização
       whereArgs: [id], // Argumentos para a condição

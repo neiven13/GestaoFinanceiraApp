@@ -100,12 +100,12 @@ class _ListaState extends State<Lista> {
                     ),
                     IconButton(
                       onPressed: () async {
-                        final updatedGasto = await Navigator.of(
+                        final resultado = await Navigator.of(
                             context).push(MaterialPageRoute
                           (builder: (context) => EditGastoPage(gasto: gastos[index]))
                         );
-                        if(updatedGasto != null) {
-                          setState(() {});
+                        if(resultado != null) {
+                          obterGastos();
                         }
                       },
                         icon: const Icon(Icons.edit),
