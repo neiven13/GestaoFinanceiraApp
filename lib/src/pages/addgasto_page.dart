@@ -12,12 +12,13 @@ class AddGastoPage extends StatefulWidget {
 }
 
 class _AddGastoPageState extends State<AddGastoPage> {
-  final TextEditingController _valorController = TextEditingController(text: '0,00');
+  final TextEditingController _valorController =
+      TextEditingController(text: '0,00');
   final TextEditingController _descricaoController = TextEditingController();
   final GastoController _gastoController = GastoController();
   int selectedIndex = 0;
   DateTime gastoDate = DateTime.now();
-  final Color corPrincipal = const Color.fromRGBO(79, 125, 106, 1);
+  final Color corPrincipal = const Color.fromARGB(255, 97, 176, 143);
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +27,9 @@ class _AddGastoPageState extends State<AddGastoPage> {
         title: const Text(
           "Criar gasto",
           style: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
-            fontFamily: 'shrikhand',
-            fontSize: 25
-          ),
+              color: Color.fromARGB(255, 255, 255, 255),
+              fontFamily: 'shrikhand',
+              fontSize: 25),
         ),
         backgroundColor: corPrincipal,
       ),

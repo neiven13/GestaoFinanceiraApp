@@ -19,7 +19,7 @@ class _EditGastoPageState extends State<EditGastoPage> {
   late int? selectedIndex;
   late DateTime gastoDate;
 
-  final Color corPrincipal = const Color.fromRGBO(79, 125, 106, 1);
+  final Color corPrincipal = const Color.fromARGB(255, 97, 176, 143);
 
   @override
   void initState() {
@@ -50,14 +50,13 @@ class _EditGastoPageState extends State<EditGastoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Editar Despesa"),
+        title: const Text("Editar gasto"),
         backgroundColor: corPrincipal,
         titleTextStyle: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-            fontStyle: FontStyle.italic,
-            letterSpacing: 1.5),
+          color: Colors.white,
+          fontSize: 25,
+          fontFamily: 'shrikhand',
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -120,9 +119,9 @@ class _EditGastoPageState extends State<EditGastoPage> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
-                    selectedIndex == 0 ? corPrincipal : Colors.grey[300],
+                        selectedIndex == 0 ? corPrincipal : Colors.grey[300],
                     foregroundColor:
-                    selectedIndex == 0 ? Colors.white : Colors.black,
+                        selectedIndex == 0 ? Colors.white : Colors.black,
                   ),
                   onPressed: () {
                     setState(() {
@@ -135,13 +134,14 @@ class _EditGastoPageState extends State<EditGastoPage> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
-                    selectedIndex == 1 ? corPrincipal : Colors.grey[300],
+                        selectedIndex == 1 ? corPrincipal : Colors.grey[300],
                     foregroundColor:
-                    selectedIndex == 1 ? Colors.white : Colors.black,
+                        selectedIndex == 1 ? Colors.white : Colors.black,
                   ),
                   onPressed: () {
                     setState(() {
-                      gastoDate = DateTime.now().subtract(const Duration(days: 1));
+                      gastoDate =
+                          DateTime.now().subtract(const Duration(days: 1));
                       selectedIndex = 1;
                     });
                   },
@@ -150,9 +150,9 @@ class _EditGastoPageState extends State<EditGastoPage> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
-                    selectedIndex == 2 ? corPrincipal : Colors.grey[300],
+                        selectedIndex == 2 ? corPrincipal : Colors.grey[300],
                     foregroundColor:
-                    selectedIndex == 2 ? Colors.white : Colors.black,
+                        selectedIndex == 2 ? Colors.white : Colors.black,
                   ),
                   onPressed: () async {
                     final DateTime? selectedDate = await showDatePicker(
@@ -190,12 +190,12 @@ class _EditGastoPageState extends State<EditGastoPage> {
                 minimumSize: const Size(100, 40),
                 foregroundColor: Colors.white,
                 backgroundColor:
-                const Color.fromRGBO(232, 232, 232, 1), // Cor do texto
+                    const Color.fromRGBO(232, 232, 232, 1), // Cor do texto
               ),
               child: const Text(
                 "Cancelar",
                 style:
-                TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
             ),
             ElevatedButton(

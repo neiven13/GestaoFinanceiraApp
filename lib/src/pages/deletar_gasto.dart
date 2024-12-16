@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:granago_app/src/controllers/gasto_controller.dart';
-import 'package:granago_app/src/pages/lista.dart';
 
 class DeletarGasto extends StatelessWidget {
-  final id;
+  final int id;
   final double valor;
   final String descricao;
-  DeletarGasto(
+  const DeletarGasto(
       {super.key,
       required this.id,
       required this.valor,
@@ -16,8 +15,8 @@ class DeletarGasto extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       content: Text(
-        'Deseja excluir o gasto R\$ ${valor} de ${descricao}?',
-        style: TextStyle(fontSize: 18),
+        'Deseja excluir o gasto R\$ $valor de $descricao?',
+        style: const TextStyle(fontSize: 18),
         textAlign: TextAlign.center,
       ),
       actions: [
@@ -45,17 +44,17 @@ class DeletarGasto extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 const indicadorObterGastos = "obterGastos";
-                GastoController().deletar(this.id);
+                GastoController().deletar(id);
                 Navigator.of(context).pop(indicadorObterGastos); // Fecha o diálogo após a exclusão
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Item excluído com sucesso!')),
+                  const SnackBar(content: Text('Item excluído com sucesso!')),
                 );
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(100, 40),
                 foregroundColor: Colors.white,
                 backgroundColor:
-                    Color.fromRGBO(79, 125, 106, 1), // Cor principal
+                    const Color.fromARGB(255, 97, 176, 143) // Cor principal
               ),
               child: const Text("Sim"),
             ),
