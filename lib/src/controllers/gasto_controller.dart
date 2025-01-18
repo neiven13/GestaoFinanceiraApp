@@ -19,10 +19,20 @@ class GastoController {
     final gasto = GastoModel(
       descricao: descricao,
       data: data,
-      valor: double.parse(valor.replaceAll(virgula, ponto)),
+      valor: estilizarValor(valor),
     );
 
     await _repositorio.inserirGasto(gasto);
+  }
+
+  double estilizarValor(String valor) {
+    valor = valor.replaceAll(",", ".");
+    var valores = valor.split(".");
+    if(valores.length > 2) {
+      valor = "";
+      valor += valores[0] + valores[1] + "." + valores[2];
+    }
+    return double.parse(valor);
   }
 
   Future<List<GastoModel>> obterTodos() async {
