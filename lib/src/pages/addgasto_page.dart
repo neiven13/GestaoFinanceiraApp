@@ -12,7 +12,7 @@ class AddGastoPage extends StatefulWidget {
 }
 
 class _AddGastoPageState extends State<AddGastoPage> {
-  final TextEditingController _valorController = TextEditingController(text: '0,00');
+  final TextEditingController _valorController = TextEditingController(text: '0,00', );
   final TextEditingController _descricaoController = TextEditingController();
   final GastoController _gastoController = GastoController();
   int selectedIndex = 0;

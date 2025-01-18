@@ -92,7 +92,7 @@ class _ListaState extends State<Lista> {
               child: Row(
                 children: [
                     Text(
-                      'R\$${gastos[index].valor.toString()}',
+                      estilizarValor(gastos[index].valor.toString()),
                       style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                     Expanded(
@@ -125,6 +125,17 @@ class _ListaState extends State<Lista> {
         );
      }
     );
+  }
+
+  String estilizarValor(String valor) {
+    valor = valor.replaceAll(".", ",");
+    var valores = valor.split(",");
+    if(valores.length == 2 && valores[1].length == 1) {
+      valores[1] += "0";
+      valor = "";
+      valor += valores[0] + "," + valores[1];
+    }
+    return 'R\$${valor}';
   }
 
   void criarDialogoDeletar(int? id, String descricao, double valor) async {
